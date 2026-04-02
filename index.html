@@ -1,0 +1,184 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control Panel Code Generator</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:,">
+  <meta name="theme-color" content="#CF8C78" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h2>CODE CREATION FORM</h2>
+
+  <div class="form-group">
+    <label for="itemSelect">ITEM:</label>
+    <select id="itemSelect" onchange="showForm(this.value)">
+      <option value="">-- Select an item --</option>
+      <option value="item1">CP-CONTROL PANEL</option>
+      <option value="item2">CH-CAST HEATER</option>
+    </select>
+  </div>
+
+  <form id="item1" class="form-section" style="display:none;" onsubmit="generateCode(event, 'CP', 'CONTROL PANEL')">
+    <div class="form-group">
+      <label>PHASE:</label>
+      <select name="phase">
+        <option value="">-- Select Phase --</option>
+        <option value="1P" data-full="SINGLE PHASE">1P-SINGLE PHASE</option>
+        <option value="2P" data-full="TWO PHASE">2P-TWO PHASE</option>
+        <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>OPERATION:</label>
+      <select name="operation">
+        <option value="">-- Select Operation --</option>
+        <option value="T" data-full="THYRISTOR">T-THYRISTOR</option>
+        <option value="S" data-full="SSR">S-SSR</option>
+        <option value="C" data-full="CONTACTOR">C-CONTACTOR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>KW RATING:</label>
+      <select name="kw_rating">
+        <option value="">-- Select KW Rating --</option>
+        <option value="4KW" data-full="4-KW">4-KW</option>
+        <option value="6KW" data-full="6-KW">6-KW</option>
+        <option value="9KW" data-full="9-KW">9-KW</option>
+        <option value="15KW" data-full="15-KW">15-KW</option>
+        <option value="18KW" data-full="18-KW">18-KW</option>
+        <option value="24KW" data-full="24-KW">24-KW</option>
+        <option value="30KW" data-full="30-KW">30-KW</option>
+        <option value="36KW" data-full="36-KW">36-KW</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>AMP:</label>
+      <select name="amp">
+        <option value="">-- Select AMP --</option>
+        <option value="AD" data-full="WITH ANALOG AMP MTR">AD-WITH ANALOG AMP MTR</option>
+        <option value="AA" data-full="WITH DIGITAL AMP MTR">AA-WITH DIGITAL AMP MTR</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>STARTER:</label>
+      <select name="starter">
+        <option value="">-- Select Starter --</option>
+        <option value="D1" data-full="1HP DOL">D1-1HP DOL</option>
+        <option value="D2" data-full="2HP DOL">D2-2HP DOL</option>
+        <option value="D3" data-full="3HP DOL">D3-3HP DOL</option>
+        <option value="D4" data-full="5HP DOL">D4-5HP DOL</option>
+      </select>
+    </div>
+
+    <button type="submit">Generate Code</button>
+  </form>
+
+  <form id="item2" class="form-section" style="display:none;" onsubmit="generateCode(event, 'CH', 'CAST HEATER')">
+    <div class="form-group">
+      <label>MATERIAL:</label>
+      <select name="material">
+        <option value="">-- Select Material --</option>
+        <option value="AL" data-full="ALUMINUM">AL-ALUMINUM</option>
+        <option value="BR" data-full="BRASS">BR-BRASS</option>
+        <option value="CI" data-full="CAST IRON">CI-CAST IRON</option>
+        <option value="BZ" data-full="BRONZE">BZ-BRONZE</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="category">HEATER SHAPE/TYPE:</label>
+      <select id="category" name="shape" onchange="showTextboxes()">
+        <option value="">-- Select Heater Shape/Type --</option>
+        <option value="BAN" data-full="BAND">BAN-BAND</option>
+        <option value="PLA" data-full="PLATE">PLA-PLATE</option>
+        <option value="DIS" data-full="DISC">DIS-DISC</option>
+        <option value="LSH" data-full="L-SHAPE">LSH-L-SHAPE</option>
+        <option value="ANG" data-full="ANGULAR">ANG-ANGULAR</option>
+        <option value="CUS" data-full="CUSTOM SHAPE">CUS-CUSTOM SHAPE</option>
+        <option value="CIRC" data-full="CIRCULATION">CIRC-CIRCULATION</option>
+        <option value="SD" data-full="ANY SPECIAL DESIGN">SD-ANY SPECIAL DESIGN</option>
+      </select>
+    </div>
+
+    <div id="textboxContainer" class="form-group"></div>
+
+    <div class="form-group">
+      <label>PHASE:</label>
+      <select name="phase">
+        <option value="">-- Select Phase --</option>
+        <option value="1P" data-full="SINGLE PHASE">1P-SINGLE PHASE</option>
+        <option value="2P" data-full="TWO PHASE">2P-TWO PHASE</option>
+        <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>VOLTAGE:</label>
+      <select name="voltage">
+        <option value="">-- Select Voltage --</option>
+        <option value="V1" data-full="120V">120V</option>
+        <option value="V2" data-full="220V">220V</option>
+        <option value="V3" data-full="240V">240V</option>
+        <option value="V4" data-full="380V">380V</option>
+        <option value="V5" data-full="415V">415V</option>
+        <option value="V6" data-full="440V">440V</option>
+        <option value="V7" data-full="480V">480V</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>WATTAGE:</label>
+      <input type="number" name="wattage" placeholder="Enter wattage" />
+    </div>
+
+    <div class="form-group">
+      <label>CONTROL/SENSOR:</label>
+      <select name="sensor">
+        <option value="">-- Select Sensor --</option>
+        <option value="N" data-full="N">N</option>
+        <option value="TCK" data-full="K-TYPE THERMOCOUPLE">TCK-K-TYPE THERMOCOUPLE</option>
+        <option value="TCJ" data-full="J-TYPE THERMOCOUPLE">TCJ-J-TYPE THERMOCOUPLE</option>
+        <option value="RTD" data-full="RTD SENSOR">RTD-RTD SENSOR</option>
+        <option value="THS" data-full="THERMOSTAT SWITCH">THS-THERMOSTAT SWITCH</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>TERMINATION TYPE:</label>
+      <select name="termination">
+        <option value="">-- Select Termination --</option>
+        <option value="STR" data-full="STANDARD LEAD WIRES">STR-STANDARD LEAD WIRES</option>
+        <option value="TBX" data-full="TERMINAL BOX">TBX-TERMINAL BOX</option>
+        <option value="SCT" data-full="SCREW TERMINALS">SCT-SCREW TERMINALS</option>
+        <option value="PLN" data-full="PLAIN PIN">PLN-PLAIN PIN</option>
+        <option value="PLG" data-full="PLUG">PLG-PLUG</option>
+      </select>
+    </div>
+
+    <button type="submit">Generate Code</button>
+  </form>
+
+  <div id="output" style="display:none;">
+    <div class="result code">
+      Item Code: <span id="itemCode"></span>
+    </div>
+    <button onclick="copyToClipboard('itemCode')">Copy Code</button>
+
+    <div class="result desc">
+      Full Description: <span id="fullDesc"></span>
+    </div>
+    <button onclick="copyToClipboard('fullDesc')">Copy Description</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
