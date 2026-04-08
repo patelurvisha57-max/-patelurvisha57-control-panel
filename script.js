@@ -4,7 +4,6 @@ function showForm(itemId) {
     });
     document.getElementById('output').style.display = 'none';
 
-    // જો કોઈ ચોક્કસ આઈટમ સિલેક્ટ કરી હોય, તો તેને બતાવો
     if (itemId) {
         const selectedForm = document.getElementById(itemId);
         if (selectedForm) {
