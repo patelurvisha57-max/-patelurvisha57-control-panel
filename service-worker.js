@@ -1,6 +1,4 @@
 const CACHE_NAME = 'codegen-v1';
-
-
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -8,8 +6,6 @@ const ASSETS_TO_CACHE = [
   './script.js',
   './manifest.json'
 ];
-
-
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -20,8 +16,6 @@ self.addEventListener('install', (event) => {
 
   self.skipWaiting();
 });
-
-
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -38,8 +32,6 @@ self.addEventListener('activate', (event) => {
  
   return self.clients.claim();
 });
-
-
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
@@ -48,8 +40,7 @@ self.addEventListener('fetch', (event) => {
         return response;
       })
       .catch(() => {
-    
-        return caches.match(event.request).then((cachedResponse) => {
+       return caches.match(event.request).then((cachedResponse) => {
           if (cachedResponse) {
             return cachedResponse;
           }
