@@ -77,7 +77,6 @@ function copyToClipboard(id) {
         console.error('Could not copy text: ', err);
     });
 }
-
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js')
