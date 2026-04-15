@@ -266,38 +266,41 @@
 
 
 <script>
-function showForm(val){
-  document.querySelectorAll('.form-section').forEach(f=>f.style.display='none');
+
+  function showForm(val) {
+  document.querySelectorAll('.form-section').forEach(f => f.style.display='none');
   document.getElementById('output').style.display='none';
   if(val) document.getElementById(val).style.display='block';
 }
 
-function generateCode(e,prefix,title){
+function generateCode(e, prefix, title) {
   e.preventDefault();
-  let code=prefix;
-  let desc=title;
+  const form = e.target;
+  let code = prefix;
+  let desc = title;
 
-  e.target.querySelectorAll('select,input').forEach(el=>{
-    if(el.value){
-      code+=el.value;
-      if(el.tagName==="SELECT"){
-        desc+=" "+(el.options[el.selectedIndex].dataset.full || el.value);
-      }else{
-        desc+=" "+el.value;
+  form.querySelectorAll('select, input').forEach(el => {
+    if(el.value) {
+      code += el.value;
+      if(el.tagName === 'SELECT') {
+        desc += ' ' + el.options[el.selectedIndex].dataset.full;
+      } else {
+        desc += ' ' + el.value;
       }
     }
   });
 
-  document.getElementById('itemCode').innerText=code;
-  document.getElementById('fullDesc').innerText=desc;
+  document.getElementById('itemCode').innerText = code;
+  document.getElementById('fullDesc').innerText = desc;
   document.getElementById('output').style.display='block';
 }
 
-function copyText(id){
-  let txt=document.getElementById(id).innerText;
-  navigator.clipboard.writeText(txt);
-  alert("Copied: "+txt);
+function copyToClipboard(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied: " + text);
 }
+  
 
 // PWA
 if('serviceWorker' in navigator){
