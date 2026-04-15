@@ -1,64 +1,147 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Control Panel Code Generator</title>
 
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="data:,">
-  <meta name="theme-color" content="#CF8C78" />
+  <!-- PWA -->
+  <meta name="theme-color" content="#7496B8">
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #7496B8, #CF8C78);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80%;
+      height: 80%;
+      background: url('patel-heater-contorl-pvt-ltd-logo-2015.webp') no-repeat center;
+      background-size: contain;
+      transform: translate(-50%, -50%);
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 24px;
+      background: linear-gradient(#ff450a, #0a63bf);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .form-section { display:none; }
+
+    .form-group {
+      margin: 12px 0;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+
+    button {
+      display: block;
+      width: 40%;
+      margin: 15px auto;
+      padding: 12px;
+      border-radius: 8px;
+      background: linear-gradient(to right, #CF8C78, #7496B8);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #output { display:none; }
+
+    .code { color:#0a63bf; font-weight:bold; }
+    .desc { color:#ff450a; }
+  </style>
 </head>
+
 <body>
 
-  <h2>CODE CREATION FORM</h2>
+<div class="container">
+<h2>CODE CREATION FORM</h2>
 
   <div class="form-group">
     <label for="itemSelect">ITEM:</label>
     <select id="itemSelect" onchange="showForm(this.value)">
       <option value="">-- Select an item --</option>
-      <option value="item1">CP-CONTROL PANEL</option>
+       <option value="item1">CP-CONTROL PANEL</option>
       <option value="item2">CH-CAST HEATER</option>
     </select>
   </div>
 
-  <form id="item1" class="form-section" style="display:none;" onsubmit="generateCode(event, 'CP', 'CONTROL PANEL')">
+  <!-- CONTROL PANEL FORM -->
+  <form id="item1" class="form-section" onsubmit="generateCode(event, 'CP', 'CONTROL PANEL')">
     <div class="form-group">
       <label>PHASE:</label>
       <select name="phase">
-        <option value="">-- Select Phase --</option>
+       <option value="">-- Select Phase --</option>
         <option value="1P" data-full="SINGLE PHASE">1P-SINGLE PHASE</option>
         <option value="2P" data-full="TWO PHASE">2P-TWO PHASE</option>
         <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>OPERATION:</label>
       <select name="operation">
-        <option value="">-- Select Operation --</option>
+            <option value="">-- Select Operation --</option>
         <option value="T" data-full="THYRISTOR">T-THYRISTOR</option>
         <option value="S" data-full="SSR">S-SSR</option>
-        <option value="C" data-full="CONTACTOR">C-CONTACTOR</option>
+        <option value="C" data-full="C-CONTACTOR">C-CONTACTOR</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>KW RATING:</label>
       <select name="kw_rating">
-        <option value="">-- Select KW Rating --</option>
-        <option value="4KW" data-full="4-KW">4-KW</option>
-        <option value="6KW" data-full="6-KW">6-KW</option>
-        <option value="9KW" data-full="9-KW">9-KW</option>
-        <option value="15KW" data-full="15-KW">15-KW</option>
-        <option value="18KW" data-full="18-KW">18-KW</option>
-        <option value="24KW" data-full="24-KW">24-KW</option>
-        <option value="30KW" data-full="30-KW">30-KW</option>
-        <option value="36KW" data-full="36-KW">36-KW</option>
+         <option value="">-- Select KW Rating --</option>
+        <option value="4-KW" data-full="4-KW">4-KW</option>
+        <option value="6-KW" data-full="6-KW">6-KW</option>
+        <option value="9-KW" data-full="9-KW">9-KW</option>
+        <option value="15-KW" data-full="15-KW">15-KW</option>
+        <option value="18-KW" data-full="18-KW">18-KW</option>
+        <option value="24-KW" data-full="24-KW">24-KW</option>
+        <option value="30-KW" data-full="30-KW">30-KW</option>
+        <option value="36-KW" data-full="36-KW">36-KW</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>AMP:</label>
       <select name="amp">
@@ -67,7 +150,6 @@
         <option value="AA" data-full="WITH DIGITAL AMP MTR">AA-WITH DIGITAL AMP MTR</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>STARTER:</label>
       <select name="starter">
@@ -78,12 +160,12 @@
         <option value="D4" data-full="5HP DOL">D4-5HP DOL</option>
       </select>
     </div>
-
     <button type="submit">Generate Code</button>
   </form>
 
-  <form id="item2" class="form-section" style="display:none;" onsubmit="generateCode(event, 'CH', 'CAST HEATER')">
-    <div class="form-group">
+  <!-- CAST HEATER FORM -->
+  <form id="item2" class="form-section" onsubmit="generateCode(event, 'CH', 'CAST HEATER')">
+     <div class="form-group">
       <label>MATERIAL:</label>
       <select name="material">
         <option value="">-- Select Material --</option>
@@ -93,7 +175,6 @@
         <option value="BZ" data-full="BRONZE">BZ-BRONZE</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="category">HEATER SHAPE/TYPE:</label>
       <select id="category" name="shape" onchange="showTextboxes()">
@@ -108,8 +189,7 @@
         <option value="SD" data-full="ANY SPECIAL DESIGN">SD-ANY SPECIAL DESIGN</option>
       </select>
     </div>
-
-    <div class="form-group">
+     <div class="form-group">
       <label for="category">DIMENSIONS/SIZE:</label>
       <select id="category" name="shape" onchange="showTextboxes()">
         <option value="">-- Select an Dimensions/Size --</option>
@@ -117,9 +197,6 @@
         <option value="16A" data-full="16 Ampere">16 A</option>
       </select>
     </div>
-
-    <div id="textboxContainer" class="form-group"></div>
-
     <div class="form-group">
       <label>PHASE:</label>
       <select name="phase">
@@ -129,7 +206,6 @@
         <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>VOLTAGE:</label>
       <select name="voltage">
@@ -143,11 +219,11 @@
         <option value="V7" data-full="480V">480V</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>WATTAGE:</label>
       <input type="number" name="wattage" placeholder="Enter wattage" />
     </div>
+
 
     <div class="form-group">
       <label>CONTROL/SENSOR:</label>
@@ -160,7 +236,6 @@
         <option value="THS" data-full="THERMOSTAT SWITCH">THS-THERMOSTAT SWITCH</option>
       </select>
     </div>
-
     <div class="form-group">
       <label>TERMINATION TYPE:</label>
       <select name="termination">
@@ -169,13 +244,14 @@
         <option value="TBX" data-full="TERMINAL BOX">TBX-TERMINAL BOX</option>
         <option value="SCT" data-full="SCREW TERMINALS">SCT-SCREW TERMINALS</option>
         <option value="PLN" data-full="PLAIN PIN">PLN-PLAIN PIN</option>
-        <option value="PLG" data-full="PLUG">PLG-PLUG</option>
+        <option value="PLG" data-full="PLUGH">PLG-PLUGH</option>
       </select>
     </div>
-
-    <button type="submit">Generate Code</button>
+   
+  <button type="submit" class="full-btn">Generate Code</button>
   </form>
 
+  <!-- Output Section -->
   <div id="output" style="display:none;">
     <div class="result code">
       Item Code: <span id="itemCode"></span>
@@ -188,6 +264,46 @@
     <button onclick="copyToClipboard('fullDesc')">Copy Description</button>
   </div>
 
-  <script src="script.js"></script>
+
+<script>
+function showForm(val){
+  document.querySelectorAll('.form-section').forEach(f=>f.style.display='none');
+  document.getElementById('output').style.display='none';
+  if(val) document.getElementById(val).style.display='block';
+}
+
+function generateCode(e,prefix,title){
+  e.preventDefault();
+  let code=prefix;
+  let desc=title;
+
+  e.target.querySelectorAll('select,input').forEach(el=>{
+    if(el.value){
+      code+=el.value;
+      if(el.tagName==="SELECT"){
+        desc+=" "+(el.options[el.selectedIndex].dataset.full || el.value);
+      }else{
+        desc+=" "+el.value;
+      }
+    }
+  });
+
+  document.getElementById('itemCode').innerText=code;
+  document.getElementById('fullDesc').innerText=desc;
+  document.getElementById('output').style.display='block';
+}
+
+function copyText(id){
+  let txt=document.getElementById(id).innerText;
+  navigator.clipboard.writeText(txt);
+  alert("Copied: "+txt);
+}
+
+// PWA
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+
 </body>
 </html>
