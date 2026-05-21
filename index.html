@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Control Panel Code Generator</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Control Panel Code Generator</title>
 
-  <!-- PWA -->
-  <meta name="theme-color" content="#7496B8">
-  <link rel="manifest" href="manifest.json">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PWA -->
+    <meta name="theme-color" content="#7496B8">
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+    <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -18,7 +18,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      /* padding: 10px; */
     }
 
     body::before {
@@ -26,8 +26,8 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 80%;
-      height: 80%;
+      width: 95%;
+      height: 95%;
       background: url('patel-heater-contorl-pvt-ltd-logo-2015.webp') no-repeat center;
       background-size: contain;
       transform: translate(-50%, -50%);
@@ -92,79 +92,84 @@
     .code { color:#0a63bf; font-weight:bold; }
     .desc { color:#ff450a; }
   </style>
-</head>
+  </head>
 
-<body>
+  <body>
 
-<div class="container">
-<h2>CODE CREATION FORM</h2>
+    <div class="container">
+      <h2>CODE CREATION FORM</h2>
 
-  <div class="form-group">
-    <label for="itemSelect">ITEM:</label>
-    <select id="itemSelect" onchange="showForm(this.value)">
-      <option value="">-- Select an item --</option>
-       <option value="item1">CP-CONTROL PANEL</option>
-      <option value="item2">CH-CAST HEATER</option>
-    </select>
-  </div>
+      <div class="form-group">
+        <label for="itemSelect">ITEM:</label>
+        <select id="itemSelect" onchange="showForm(this.value)">
+          <option value>-- Select an item --</option>
+          <option value="item1">CP-CONTROL PANEL</option>
+          <option value="item2">CH-CAST HEATER</option>
+          <option value="item3">IH-INDUSTRIAL HEATER</option>
+          <option value="item4">MH-MICA HEATER</option>
+          <option value="item5">CH-CERAMIC HEATER</option>
+          <option value="item6">TH-TUBULAR HEATER</option>
+          <option value="item7">IH-IMMERSION HEATER</option>
+        </select>
+      </div>
 
-  <!-- CONTROL PANEL FORM -->
-  <form id="item1" class="form-section" onsubmit="generateCode(event, 'CP', 'CONTROL PANEL')">
-    <div class="form-group">
-      <label>PHASE:</label>
-      <select name="phase">
-       <option value="">-- Select Phase --</option>
-        <option value="1P" data-full="SINGLE PHASE">1P-SINGLE PHASE</option>
-        <option value="2P" data-full="TWO PHASE">2P-TWO PHASE</option>
-        <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>OPERATION:</label>
-      <select name="operation">
-            <option value="">-- Select Operation --</option>
-        <option value="T" data-full="THYRISTOR">T-THYRISTOR</option>
-        <option value="S" data-full="SSR">S-SSR</option>
-        <option value="C" data-full="C-CONTACTOR">C-CONTACTOR</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>KW RATING:</label>
-      <select name="kw_rating">
-         <option value="">-- Select KW Rating --</option>
-        <option value="4-KW" data-full="4-KW">4-KW</option>
-        <option value="6-KW" data-full="6-KW">6-KW</option>
-        <option value="9-KW" data-full="9-KW">9-KW</option>
-        <option value="15-KW" data-full="15-KW">15-KW</option>
-        <option value="18-KW" data-full="18-KW">18-KW</option>
-        <option value="24-KW" data-full="24-KW">24-KW</option>
-        <option value="30-KW" data-full="30-KW">30-KW</option>
-        <option value="36-KW" data-full="36-KW">36-KW</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>AMP:</label>
-      <select name="amp">
-        <option value="">-- Select AMP --</option>
-        <option value="AD" data-full="WITH ANALOG AMP MTR">AD-WITH ANALOG AMP MTR</option>
-        <option value="AA" data-full="WITH DIGITAL AMP MTR">AA-WITH DIGITAL AMP MTR</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>STARTER:</label>
-      <select name="starter">
-        <option value="">-- Select Starter --</option>
-        <option value="D1" data-full="1HP DOL">D1-1HP DOL</option>
-        <option value="D2" data-full="2HP DOL">D2-2HP DOL</option>
-        <option value="D3" data-full="3HP DOL">D3-3HP DOL</option>
-        <option value="D4" data-full="5HP DOL">D4-5HP DOL</option>
-      </select>
-    </div>
-    <button type="submit">Generate Code</button>
-  </form>
+      <!-- CONTROL PANEL FORM -->
+      <form id="item1" class="form-section" onsubmit="generateCode(event, 'CP', 'CONTROL PANEL')">
+        <div class="form-group">
+          <label>PHASE:</label>
+          <select name="phase">
+            <option value>-- Select Phase --</option>
+            <option value="1P" data-full="SINGLE PHASE">1P-SINGLE PHASE</option>
+            <option value="2P" data-full="TWO PHASE">2P-TWO PHASE</option>
+            <option value="3P" data-full="THREE PHASE">3P-THREE PHASE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>OPERATION:</label>
+          <select name="operation">
+            <option value>-- Select Operation --</option>
+            <option value="T" data-full="THYRISTOR">T-THYRISTOR</option>
+            <option value="S" data-full="SSR">S-SSR</option>
+            <option value="C" data-full="C-CONTACTOR">C-CONTACTOR</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>KW RATING:</label>
+          <select name="kw_rating">
+            <option value>-- Select KW Rating --</option>
+            <option value="4-KW" data-full="4-KW">4-KW</option>
+            <option value="6-KW" data-full="6-KW">6-KW</option>
+            <option value="9-KW" data-full="9-KW">9-KW</option>
+            <option value="15-KW" data-full="15-KW">15-KW</option>
+            <option value="18-KW" data-full="18-KW">18-KW</option>
+            <option value="24-KW" data-full="24-KW">24-KW</option>
+            <option value="30-KW" data-full="30-KW">30-KW</option>
+            <option value="36-KW" data-full="36-KW">36-KW</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>AMP:</label>
+          <select name="amp">
+            <option value>-- Select AMP --</option>
+            <option value="AD" data-full="WITH ANALOG AMP MTR">AD-WITH ANALOG AMP MTR</option>
+            <option value="AA" data-full="WITH DIGITAL AMP MTR">AA-WITH DIGITAL AMP MTR</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>STARTER:</label>
+          <select name="starter">
+            <option value>-- Select Starter --</option>
+            <option value="D1" data-full="1HP DOL">D1-1HP DOL</option>
+            <option value="D2" data-full="2HP DOL">D2-2HP DOL</option>
+            <option value="D3" data-full="3HP DOL">D3-3HP DOL</option>
+            <option value="D4" data-full="5HP DOL">D4-5HP DOL</option>
+          </select>
+        </div>
+        <button type="submit">Generate Code</button>
+      </form>
 
-  <!-- CAST HEATER FORM -->
-  <form id="item2" class="form-section" onsubmit="generateCode(event, 'CH', 'CAST HEATER')">
+      <!-- CAST HEATER FORM -->
+      <form id="item2" class="form-section" onsubmit="generateCode(event, 'CH', 'CAST HEATER')">
      <div class="form-group">
       <label>MATERIAL:</label>
       <select name="material">
@@ -189,14 +194,7 @@
         <option value="SD" data-full="ANY SPECIAL DESIGN">SD-ANY SPECIAL DESIGN</option>
       </select>
     </div>
-     <div class="form-group">
-      <label for="category">DIMENSIONS/SIZE:</label>
-      <select id="category" name="shape" onchange="showTextboxes()">
-        <option value="">-- Select an Dimensions/Size --</option>
-        <option value="6A" data-full="6 Ampere">6 A</option>
-        <option value="16A" data-full="16 Ampere">16 A</option>
-      </select>
-    </div>
+    <div id="textboxContainer" class="form-group"></div>
     <div class="form-group">
       <label>PHASE:</label>
       <select name="phase">
@@ -247,64 +245,1486 @@
         <option value="PLG" data-full="PLUGH">PLG-PLUGH</option>
       </select>
     </div>
-   
-  <button type="submit" class="full-btn">Generate Code</button>
+       <button type="submit">Generate Code</button>
   </form>
 
-  <!-- Output Section -->
-  <div id="output" style="display:none;">
-    <div class="result code">
-      Item Code: <span id="itemCode"></span>
+      <form id="item3" class="form-section"
+        onsubmit="generateCode(event, 'IH', 'INDUSTRIAL HEATER' )">
+        <div class="form-group">
+          <label>PHASE:</label>
+          <select name="phase">
+            <option value>-- Select Phase --</option>
+            <option value="SP" data-full="SINGLE PHASE">SP-SINGLE PHASE</option>
+            <option value="TP" data-full="THREE PHASE">TP-THREE PHASE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>OPERATION:</label>
+          <select name="Operation">
+            <option value>-- Select Operation --</option>
+            <option value="MAN" data-full="MANUAL">MAN-MANUAL</option>
+            <option value="SA" data-full="SEMI AUTOMATIC">SA-SEMI
+              AUTOMATIC</option>
+            <option value="FA" data-full="FULLY AUTOMATIC">FA-FULLY
+              AUTOMATIC</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>AMP:</label>
+          <select name="amp">
+            <option value>-- Select AMP --</option>
+            <option value="6A" data-full="6 AMP">6A-6 AMP</option>
+            <option value="16A" data-full="16 AMP">16A-16 AMP</option>
+            <option value="32A" data-full="32 AMP">32A-32 AMP</option>
+            <option value="63A" data-full="63 AMP">63A-63 AMP</option>
+            <option value="100A" data-full="100 AMP">100A-100 AMP</option>
+            <option value="150A" data-full="150 AMP">150A-150 AMP</option>
+            <option value="200A" data-full="200 AMP">200A-200 AMP</option>
+            <option value="400A" data-full="400 AMP">400A-400 AMP</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>STARTER:</label>
+          <select id="starter">
+
+            <option value>-- Select Starter --</option>
+
+            <option value="DOL" data-full="DIRECT ONLINE STARTER">
+              DOL-DIRECT ONLINE STARTER
+            </option>
+
+            <option value="SD" data-full="STAR DELTA STARTER">
+              SD-STAR DELTA STARTER
+            </option>
+
+            <option value="SS" data-full="SOFT STARTER">
+              SS-SOFT STARTER
+            </option>
+
+            <option value="VFD" data-full="VARIABLE FREQUENCY DRIVE STARTER">
+              VFD-VARIABLE FREQUENCY DRIVE STARTER
+            </option>
+
+          </select>
+        </div>
+        <div class="form-group">
+          <label>TEMPERATURE CONTROLLER:</label>
+          <select id="temp">
+
+            <option value>-- Select Controller --</option>
+
+            <option value="PID" data-full="PID CONTROLLER">
+              PID-PID CONTROLLER
+            </option>
+
+            <option value="DIG" data-full="DIGITAL CONTROLLER">
+              DIG-DIGITAL CONTROLLER
+            </option>
+
+            <option value="ANA" data-full="ANALOG CONTROLLER">
+              ANA-ANALOG CONTROLLER
+            </option>
+
+            <option value="PLC" data-full="PLC BASED CONTROLLER">
+              PLC-PLC BASED CONTROLLER
+            </option>
+
+          </select>
+        </div>
+
+        <!-- ZONE -->
+        <div class="form-group">
+          <label>ZONE QUANTITY:</label>
+          <select id="zone">
+
+            <option value>-- Select Zone --</option>
+
+            <option value="1Z" data-full="1 ZONE">
+              1Z-1 ZONE
+            </option>
+
+            <option value="2Z" data-full="2 ZONE">
+              2Z-2 ZONE
+            </option>
+
+            <option value="4Z" data-full="4 ZONE">
+              4Z-4 ZONE
+            </option>
+
+            <option value="6Z" data-full="6 ZONE">
+              6Z-6 ZONE
+            </option>
+
+            <option value="8Z" data-full="8 ZONE">
+              8Z-8 ZONE
+            </option>
+
+            <option value="12Z" data-full="12 ZONE">
+              12Z-12 ZONE
+            </option>
+
+            <option value="16Z" data-full="16 ZONE">
+              16Z-16 ZONE
+            </option>
+
+            <option value="24Z" data-full="24 ZONE">
+              24Z-24 ZONE
+            </option>
+
+          </select>
+        </div>
+
+        <!-- VOLTAGE -->
+        <div class="form-group">
+          <label>VOLTAGE:</label>
+          <select id="voltage">
+
+            <option value>-- Select Voltage --</option>
+
+            <option value="230V" data-full="230 VOLT">
+              230V-230 VOLT
+            </option>
+
+            <option value="415V" data-full="415 VOLT">
+              415V-415 VOLT
+            </option>
+
+            <option value="440V" data-full="440 VOLT">
+              440V-440 VOLT
+            </option>
+
+          </select>
+        </div>
+        <button type="submit" class="full-btn">Generate Code</button>
+      </form>
+
+      <form id="item4" class="form-section"
+        onsubmit="generateCode(event, 'MH', 'MICA HEATER' )">
+        <div class="form-group">
+          <label>MICA HEATER TYPE:</label>
+
+          <select id="heaterType">
+
+            <option value>-- Select Mica Heater Type --</option>
+
+            <option value="MBH" data-full="MICA BAND HEATER">
+              MBH-MICA BAND HEATER
+            </option>
+
+            <option value="MNH" data-full="MICA NOZZLE HEATER">
+              MNH-MICA NOZZLE HEATER
+            </option>
+
+            <option value="MPH" data-full="MICA PLATE HEATER">
+              MPH-MICA PLATE HEATER
+            </option>
+
+            <option value="MRH" data-full="MICA RING HEATER">
+              MRH-MICA RING HEATER
+            </option>
+
+            <option value="MSH" data-full="MICA STRIP HEATER">
+              MSH-MICA STRIP HEATER
+            </option>
+
+            <option value="MDH" data-full="MICA DISC HEATER">
+              MDH-MICA DISC HEATER
+            </option>
+
+            <option value="MEH" data-full="MICA EXTRUDER HEATER">
+              MEH-MICA EXTRUDER HEATER
+            </option>
+
+            <option value="MBR" data-full="MICA BARREL HEATER">
+              MBR-MICA BARREL HEATER
+            </option>
+
+          </select>
+        </div>
+
+        <!-- VOLTAGE -->
+        <div class="form-group">
+          <label>VOLTAGE:</label>
+
+          <select id="voltage">
+
+            <option value>-- Select Voltage --</option>
+
+            <option value="110V" data-full="110 VOLT">
+              110V-110 VOLT
+            </option>
+
+            <option value="230V" data-full="230 VOLT">
+              230V-230 VOLT
+            </option>
+
+            <option value="415V" data-full="415 VOLT">
+              415V-415 VOLT
+            </option>
+
+            <option value="440V" data-full="440 VOLT">
+              440V-440 VOLT
+            </option>
+
+          </select>
+        </div>
+
+        <!-- WATT -->
+        <div class="form-group">
+          <label>WATT:</label>
+
+          <select id="watt">
+
+            <option value>-- Select Watt --</option>
+
+            <option value="250W" data-full="250 WATT">
+              250W-250 WATT
+            </option>
+
+            <option value="500W" data-full="500 WATT">
+              500W-500 WATT
+            </option>
+
+            <option value="750W" data-full="750 WATT">
+              750W-750 WATT
+            </option>
+
+            <option value="1000W" data-full="1000 WATT">
+              1000W-1000 WATT
+            </option>
+
+            <option value="1500W" data-full="1500 WATT">
+              1500W-1500 WATT
+            </option>
+
+            <option value="2000W" data-full="2000 WATT">
+              2000W-2000 WATT
+            </option>
+
+            <option value="3000W" data-full="3000 WATT">
+              3000W-3000 WATT
+            </option>
+
+          </select>
+        </div>
+
+        <!-- DIAMETER -->
+        <div class="form-group">
+          <label>DIAMETER:</label>
+
+          <select id="diameter">
+
+            <option value>-- Select Diameter --</option>
+
+            <option value="25MM" data-full="25 MM">
+              25MM-25 MM
+            </option>
+
+            <option value="50MM" data-full="50 MM">
+              50MM-50 MM
+            </option>
+
+            <option value="75MM" data-full="75 MM">
+              75MM-75 MM
+            </option>
+
+            <option value="100MM" data-full="100 MM">
+              100MM-100 MM
+            </option>
+
+            <option value="150MM" data-full="150 MM">
+              150MM-150 MM
+            </option>
+
+            <option value="200MM" data-full="200 MM">
+              200MM-200 MM
+            </option>
+
+          </select>
+        </div>
+
+        <!-- HEIGHT / WIDTH -->
+        <div class="form-group">
+          <label>HEIGHT / WIDTH:</label>
+
+          <select id="width">
+
+            <option value>-- Select Size --</option>
+
+            <option value="25W" data-full="25 MM WIDTH">
+              25W-25 MM WIDTH
+            </option>
+
+            <option value="38W" data-full="38 MM WIDTH">
+              38W-38 MM WIDTH
+            </option>
+
+            <option value="50W" data-full="50 MM WIDTH">
+              50W-50 MM WIDTH
+            </option>
+
+            <option value="75W" data-full="75 MM WIDTH">
+              75W-75 MM WIDTH
+            </option>
+
+            <option value="100W" data-full="100 MM WIDTH">
+              100W-100 MM WIDTH
+            </option>
+
+          </select>
+        </div>
+
+        <!-- TERMINAL TYPE -->
+        <div class="form-group">
+          <label>TERMINAL TYPE:</label>
+
+          <select id="terminal">
+
+            <option value>-- Select Terminal Type --</option>
+
+            <option value="STR" data-full="STANDARD LEAD WIRES">
+              STR-STANDARD LEAD WIRES
+            </option>
+
+            <option value="FGL" data-full="FIBER GLASS LEAD WIRES">
+              FGL-FIBER GLASS LEAD WIRES
+            </option>
+
+            <option value="HTL" data-full="HIGH TEMPERATURE LEAD WIRES">
+              HTL-HIGH TEMPERATURE LEAD WIRES
+            </option>
+
+            <option value="CER" data-full="CERAMIC TERMINAL">
+              CER-CERAMIC TERMINAL
+            </option>
+
+            <option value="PTB" data-full="PORCELAIN TERMINAL BOX">
+              PTB-PORCELAIN TERMINAL BOX
+            </option>
+
+            <option value="SSB" data-full="STAINLESS STEEL BRAIDED LEADS">
+              SSB-STAINLESS STEEL BRAIDED LEADS
+            </option>
+
+          </select>
+        </div>
+
+        <!-- FIXING TYPE -->
+        <div class="form-group">
+          <label>FIXING TYPE:</label>
+
+          <select id="fixing">
+
+            <option value>-- Select Fixing Type --</option>
+
+            <option value="CLP" data-full="CLAMP FIXING">
+              CLP-CLAMP FIXING
+            </option>
+
+            <option value="HOL" data-full="WITH MOUNTING HOLES">
+              HOL-WITH MOUNTING HOLES
+            </option>
+
+            <option value="SPR" data-full="SPRING PROTECTION">
+              SPR-SPRING PROTECTION
+            </option>
+
+            <option value="INS" data-full="INSULATED TYPE">
+              INS-INSULATED TYPE
+            </option>
+
+          </select>
+        </div>
+
+        <!-- SENSOR -->
+        <div class="form-group">
+          <label>SENSOR OPTION:</label>
+
+          <select id="sensor">
+
+            <option value>-- Select Sensor Option --</option>
+
+            <option value="TC" data-full="THERMOCOUPLE HOLE">
+              TC-THERMOCOUPLE HOLE
+            </option>
+
+            <option value="PID" data-full="PID SENSOR TYPE">
+              PID-PID SENSOR TYPE
+            </option>
+
+            <option value="NON" data-full="WITHOUT SENSOR">
+              NON-WITHOUT SENSOR
+            </option>
+
+          </select>
+        </div>
+
+        <!-- MATERIAL -->
+        <div class="form-group">
+          <label>MATERIAL:</label>
+
+          <select id="material">
+
+            <option value>-- Select Material --</option>
+
+            <option value="SS" data-full="STAINLESS STEEL">
+              SS-STAINLESS STEEL
+            </option>
+
+            <option value="MS" data-full="MILD STEEL">
+              MS-MILD STEEL
+            </option>
+
+            <option value="BR" data-full="BRASS">
+              BR-BRASS
+            </option>
+
+          </select>
+        </div>
+
+        <!-- QUANTITY -->
+        <div class="form-group">
+          <label>QUANTITY:</label>
+          <input type="number" id="qty" placeholder="Enter Quantity">
+        </div><button type="submit" class="full-btn">Generate Code</button>
+      </form>
+
+      <form id="item5" class="form-section"
+        onsubmit="generateCode(event, 'CH', 'CERAMIC HEATER')">
+        <div class="form-group">
+          <label>CERAMIC HEATER TYPE:</label>
+
+          <select id="heaterType">
+
+            <option value>-- Select Ceramic Heater Type --</option>
+
+            <option value="CBH" data-full="CERAMIC BAND HEATER">
+              CBH-CERAMIC BAND HEATER
+            </option>
+
+            <option value="CNH" data-full="CERAMIC NOZZLE HEATER">
+              CNH-CERAMIC NOZZLE HEATER
+            </option>
+
+            <option value="CPH" data-full="CERAMIC PLATE HEATER">
+              CPH-CERAMIC PLATE HEATER
+            </option>
+
+            <option value="CRH" data-full="CERAMIC RING HEATER">
+              CRH-CERAMIC RING HEATER
+            </option>
+
+            <option value="CSH" data-full="CERAMIC STRIP HEATER">
+              CSH-CERAMIC STRIP HEATER
+            </option>
+
+            <option value="CDH" data-full="CERAMIC DISC HEATER">
+              CDH-CERAMIC DISC HEATER
+            </option>
+
+            <option value="CEH" data-full="CERAMIC EXTRUDER HEATER">
+              CEH-CERAMIC EXTRUDER HEATER
+            </option>
+
+            <option value="CAH" data-full="CERAMIC AIR COOLED HEATER">
+              CAH-CERAMIC AIR COOLED HEATER
+            </option>
+
+          </select>
+        </div>
+
+        <!-- VOLTAGE -->
+        <div class="form-group">
+          <label>VOLTAGE:</label>
+
+          <select id="voltage">
+
+            <option value>-- Select Voltage --</option>
+
+            <option value="110V" data-full="110 VOLT">
+              110V-110 VOLT
+            </option>
+
+            <option value="230V" data-full="230 VOLT">
+              230V-230 VOLT
+            </option>
+
+            <option value="415V" data-full="415 VOLT">
+              415V-415 VOLT
+            </option>
+
+            <option value="440V" data-full="440 VOLT">
+              440V-440 VOLT
+            </option>
+
+          </select>
+        </div>
+
+        <!-- WATT -->
+        <div class="form-group">
+          <label>WATT:</label>
+
+          <select id="watt">
+
+            <option value>-- Select Watt --</option>
+
+            <option value="250W" data-full="250 WATT">
+              250W-250 WATT
+            </option>
+
+            <option value="500W" data-full="500 WATT">
+              500W-500 WATT
+            </option>
+
+            <option value="750W" data-full="750 WATT">
+              750W-750 WATT
+            </option>
+
+            <option value="1000W" data-full="1000 WATT">
+              1000W-1000 WATT
+            </option>
+
+            <option value="1500W" data-full="1500 WATT">
+              1500W-1500 WATT
+            </option>
+
+            <option value="2000W" data-full="2000 WATT">
+              2000W-2000 WATT
+            </option>
+
+            <option value="3000W" data-full="3000 WATT">
+              3000W-3000 WATT
+            </option>
+
+            <option value="5000W" data-full="5000 WATT">
+              5000W-5000 WATT
+            </option>
+
+          </select>
+        </div>
+
+        <!-- DIAMETER -->
+        <div class="form-group">
+          <label>DIAMETER:</label>
+
+          <select id="diameter">
+
+            <option value>-- Select Diameter --</option>
+
+            <option value="25MM" data-full="25 MM">
+              25MM-25 MM
+            </option>
+
+            <option value="50MM" data-full="50 MM">
+              50MM-50 MM
+            </option>
+
+            <option value="75MM" data-full="75 MM">
+              75MM-75 MM
+            </option>
+
+            <option value="100MM" data-full="100 MM">
+              100MM-100 MM
+            </option>
+
+            <option value="150MM" data-full="150 MM">
+              150MM-150 MM
+            </option>
+
+            <option value="200MM" data-full="200 MM">
+              200MM-200 MM
+            </option>
+
+          </select>
+        </div>
+
+        <!-- HEIGHT / WIDTH -->
+        <div class="form-group">
+          <label>HEIGHT / WIDTH:</label>
+
+          <select id="width">
+
+            <option value>-- Select Size --</option>
+
+            <option value="25W" data-full="25 MM WIDTH">
+              25W-25 MM WIDTH
+            </option>
+
+            <option value="38W" data-full="38 MM WIDTH">
+              38W-38 MM WIDTH
+            </option>
+
+            <option value="50W" data-full="50 MM WIDTH">
+              50W-50 MM WIDTH
+            </option>
+
+            <option value="75W" data-full="75 MM WIDTH">
+              75W-75 MM WIDTH
+            </option>
+
+            <option value="100W" data-full="100 MM WIDTH">
+              100W-100 MM WIDTH
+            </option>
+
+          </select>
+        </div>
+
+        <!-- TERMINAL TYPE -->
+        <div class="form-group">
+          <label>TERMINAL TYPE:</label>
+
+          <select id="terminal">
+
+            <option value>-- Select Terminal Type --</option>
+
+            <option value="STR" data-full="STANDARD LEAD WIRES">
+              STR-STANDARD LEAD WIRES
+            </option>
+
+            <option value="FGL" data-full="FIBER GLASS LEAD WIRES">
+              FGL-FIBER GLASS LEAD WIRES
+            </option>
+
+            <option value="HTL" data-full="HIGH TEMPERATURE LEAD WIRES">
+              HTL-HIGH TEMPERATURE LEAD WIRES
+            </option>
+
+            <option value="CER" data-full="CERAMIC TERMINAL">
+              CER-CERAMIC TERMINAL
+            </option>
+
+            <option value="PTB" data-full="PORCELAIN TERMINAL BOX">
+              PTB-PORCELAIN TERMINAL BOX
+            </option>
+
+            <option value="SSB" data-full="STAINLESS STEEL BRAIDED LEADS">
+              SSB-STAINLESS STEEL BRAIDED LEADS
+            </option>
+
+          </select>
+        </div>
+
+        <!-- FIXING TYPE -->
+        <div class="form-group">
+          <label>FIXING TYPE:</label>
+
+          <select id="fixing">
+
+            <option value>-- Select Fixing Type --</option>
+
+            <option value="CLP" data-full="CLAMP FIXING">
+              CLP-CLAMP FIXING
+            </option>
+
+            <option value="HOL" data-full="WITH MOUNTING HOLES">
+              HOL-WITH MOUNTING HOLES
+            </option>
+
+            <option value="SPR" data-full="SPRING PROTECTION">
+              SPR-SPRING PROTECTION
+            </option>
+
+            <option value="AIR" data-full="AIR COOLED TYPE">
+              AIR-AIR COOLED TYPE
+            </option>
+
+          </select>
+        </div>
+
+        <!-- SENSOR -->
+        <div class="form-group">
+          <label>SENSOR OPTION:</label>
+
+          <select id="sensor">
+
+            <option value>-- Select Sensor Option --</option>
+
+            <option value="TC" data-full="THERMOCOUPLE HOLE">
+              TC-THERMOCOUPLE HOLE
+            </option>
+
+            <option value="PID" data-full="PID SENSOR TYPE">
+              PID-PID SENSOR TYPE
+            </option>
+
+            <option value="NON" data-full="WITHOUT SENSOR">
+              NON-WITHOUT SENSOR
+            </option>
+
+          </select>
+        </div>
+
+        <!-- INSULATION -->
+        <div class="form-group">
+          <label>INSULATION TYPE:</label>
+
+          <select id="insulation">
+
+            <option value>-- Select Insulation --</option>
+
+            <option value="BLK" data-full="CERAMIC BLOCK INSULATION">
+              BLK-CERAMIC BLOCK INSULATION
+            </option>
+
+            <option value="FBR" data-full="FIBER INSULATION">
+              FBR-FIBER INSULATION
+            </option>
+
+            <option value="MIN" data-full="MINERAL INSULATION">
+              MIN-MINERAL INSULATION
+            </option>
+
+          </select>
+        </div>
+
+        <!-- MATERIAL -->
+        <div class="form-group">
+          <label>MATERIAL:</label>
+
+          <select id="material">
+
+            <option value>-- Select Material --</option>
+
+            <option value="SS" data-full="STAINLESS STEEL">
+              SS-STAINLESS STEEL
+            </option>
+
+            <option value="MS" data-full="MILD STEEL">
+              MS-MILD STEEL
+            </option>
+
+            <option value="BR" data-full="BRASS">
+              BR-BRASS
+            </option>
+
+          </select>
+        </div>
+
+        <!-- QUANTITY -->
+        <div class="form-group">
+          <label>QUANTITY:</label>
+          <input type="number" id="qty" placeholder="Enter Quantity">
+        </div>
+
+      <button type="submit">Generate Code</button>
+    </form> 
+
+ <form id="item6" class="form-section"
+        onsubmit="generateCode(event, 'TH', 'TUBULAR HEATER')">
+        <div class="form-group">
+       <label>TUBULAR HEATER TYPE:</label>
+
+<select id="heaterType">
+
+<option value="">-- Select Tubular Heater Type --</option>
+
+<option value="STH" data-full="STRAIGHT TUBULAR HEATER">
+STH-STRAIGHT TUBULAR HEATER
+</option>
+
+<option value="UTH" data-full="U TYPE TUBULAR HEATER">
+UTH-U TYPE TUBULAR HEATER
+</option>
+
+<option value="WTH" data-full="W TYPE TUBULAR HEATER">
+WTH-W TYPE TUBULAR HEATER
+</option>
+
+<option value="FTH" data-full="FINNED TUBULAR HEATER">
+FTH-FINNED TUBULAR HEATER
+</option>
+
+<option value="ITH" data-full="IMMERSION TUBULAR HEATER">
+ITH-IMMERSION TUBULAR HEATER
+</option>
+
+<option value="ATH" data-full="AIR TUBULAR HEATER">
+ATH-AIR TUBULAR HEATER
+</option>
+
+<option value="OTH" data-full="OVEN TUBULAR HEATER">
+OTH-OVEN TUBULAR HEATER
+</option>
+
+<option value="DTH" data-full="DUCT TUBULAR HEATER">
+DTH-DUCT TUBULAR HEATER
+</option>
+
+</select>
+</div>
+
+<!-- VOLTAGE -->
+<div class="form-group">
+<label>VOLTAGE:</label>
+
+<select id="voltage">
+
+<option value="">-- Select Voltage --</option>
+
+<option value="110V" data-full="110 VOLT">
+110V-110 VOLT
+</option>
+
+<option value="230V" data-full="230 VOLT">
+230V-230 VOLT
+</option>
+
+<option value="415V" data-full="415 VOLT">
+415V-415 VOLT
+</option>
+
+<option value="440V" data-full="440 VOLT">
+440V-440 VOLT
+</option>
+
+</select>
+</div>
+
+<!-- WATT -->
+<div class="form-group">
+<label>WATT:</label>
+
+<select id="watt">
+
+<option value="">-- Select Watt --</option>
+
+<option value="500W" data-full="500 WATT">
+500W-500 WATT
+</option>
+
+<option value="1000W" data-full="1000 WATT">
+1000W-1000 WATT
+</option>
+
+<option value="1500W" data-full="1500 WATT">
+1500W-1500 WATT
+</option>
+
+<option value="2000W" data-full="2000 WATT">
+2000W-2000 WATT
+</option>
+
+<option value="3000W" data-full="3000 WATT">
+3000W-3000 WATT
+</option>
+
+<option value="5000W" data-full="5000 WATT">
+5000W-5000 WATT
+</option>
+
+<option value="7500W" data-full="7500 WATT">
+7500W-7500 WATT
+</option>
+
+<option value="10000W" data-full="10000 WATT">
+10000W-10000 WATT
+</option>
+
+</select>
+</div>
+
+<!-- TUBE DIAMETER -->
+<div class="form-group">
+<label>TUBE DIAMETER:</label>
+
+<select id="diameter">
+
+<option value="">-- Select Diameter --</option>
+
+<option value="6MM" data-full="6 MM DIAMETER">
+6MM-6 MM DIAMETER
+</option>
+
+<option value="8MM" data-full="8 MM DIAMETER">
+8MM-8 MM DIAMETER
+</option>
+
+<option value="10MM" data-full="10 MM DIAMETER">
+10MM-10 MM DIAMETER
+</option>
+
+<option value="12MM" data-full="12 MM DIAMETER">
+12MM-12 MM DIAMETER
+</option>
+
+<option value="16MM" data-full="16 MM DIAMETER">
+16MM-16 MM DIAMETER
+</option>
+
+</select>
+</div>
+
+<!-- HEATER LENGTH -->
+<div class="form-group">
+<label>HEATER LENGTH:</label>
+
+<select id="length">
+
+<option value="">-- Select Length --</option>
+
+<option value="300MM" data-full="300 MM LENGTH">
+300MM-300 MM LENGTH
+</option>
+
+<option value="500MM" data-full="500 MM LENGTH">
+500MM-500 MM LENGTH
+</option>
+
+<option value="750MM" data-full="750 MM LENGTH">
+750MM-750 MM LENGTH
+</option>
+
+<option value="1000MM" data-full="1000 MM LENGTH">
+1000MM-1000 MM LENGTH
+</option>
+
+<option value="1500MM" data-full="1500 MM LENGTH">
+1500MM-1500 MM LENGTH
+</option>
+
+<option value="2000MM" data-full="2000 MM LENGTH">
+2000MM-2000 MM LENGTH
+</option>
+
+</select>
+</div>
+
+<!-- TERMINAL TYPE -->
+<div class="form-group">
+<label>TERMINAL TYPE:</label>
+
+<select id="terminal">
+
+<option value="">-- Select Terminal Type --</option>
+
+<option value="STR" data-full="STANDARD LEAD WIRES">
+STR-STANDARD LEAD WIRES
+</option>
+
+<option value="FGL" data-full="FIBER GLASS LEAD WIRES">
+FGL-FIBER GLASS LEAD WIRES
+</option>
+
+<option value="HTL" data-full="HIGH TEMPERATURE LEAD WIRES">
+HTL-HIGH TEMPERATURE LEAD WIRES
+</option>
+
+<option value="CER" data-full="CERAMIC TERMINAL">
+CER-CERAMIC TERMINAL
+</option>
+
+<option value="PTB" data-full="PORCELAIN TERMINAL BOX">
+PTB-PORCELAIN TERMINAL BOX
+</option>
+
+<option value="SSB" data-full="STAINLESS STEEL BRAIDED LEADS">
+SSB-STAINLESS STEEL BRAIDED LEADS
+</option>
+
+</select>
+</div>
+
+<!-- MOUNTING TYPE -->
+<div class="form-group">
+<label>MOUNTING TYPE:</label>
+
+<select id="mounting">
+
+<option value="">-- Select Mounting Type --</option>
+
+<option value="FLG" data-full="FLANGE MOUNTING">
+FLG-FLANGE MOUNTING
+</option>
+
+<option value="THR" data-full="THREADED MOUNTING">
+THR-THREADED MOUNTING
+</option>
+
+<option value="CLP" data-full="CLAMP MOUNTING">
+CLP-CLAMP MOUNTING
+</option>
+
+<option value="PLN" data-full="PLAIN TYPE">
+PLN-PLAIN TYPE
+</option>
+
+</select>
+</div>
+
+<!-- SENSOR -->
+<div class="form-group">
+<label>SENSOR OPTION:</label>
+
+<select id="sensor">
+
+<option value="">-- Select Sensor Option --</option>
+
+<option value="TC" data-full="THERMOCOUPLE">
+TC-THERMOCOUPLE
+</option>
+
+<option value="RTD" data-full="RTD SENSOR">
+RTD-RTD SENSOR
+</option>
+
+<option value="NON" data-full="WITHOUT SENSOR">
+NON-WITHOUT SENSOR
+</option>
+
+</select>
+</div>
+
+<!-- MATERIAL -->
+<div class="form-group">
+<label>TUBE MATERIAL:</label>
+
+<select id="material">
+
+<option value="">-- Select Material --</option>
+
+<option value="SS304" data-full="STAINLESS STEEL 304">
+SS304-STAINLESS STEEL 304
+</option>
+
+<option value="SS316" data-full="STAINLESS STEEL 316">
+SS316-STAINLESS STEEL 316
+</option>
+
+<option value="INC" data-full="INCOLOY">
+INC-INCOLOY
+</option>
+
+<option value="COP" data-full="COPPER">
+COP-COPPER
+</option>
+
+</select>
+</div>
+
+<!-- QUANTITY -->
+<div class="form-group">
+<label>QUANTITY:</label>
+<input type="number" id="qty" placeholder="Enter Quantity">
+</div>
+
+<button type="submit">Generate Code</button>
+    </form>
+
+
+     <form id="item7" class="form-section"
+        onsubmit="generateCode(event, 'IH', 'IMMERSION HEATER')">
+        <div class="form-group">
+<label>IMMERSION HEATER TYPE:</label>
+
+<select id="heaterType">
+
+<option value="">-- Select Immersion Heater Type --</option>
+
+<option value="SIR" data-full="SCREW PLUG IMMERSION HEATER">
+SIR-SCREW PLUG IMMERSION HEATER
+</option>
+
+<option value="FIR" data-full="FLANGE IMMERSION HEATER">
+FIR-FLANGE IMMERSION HEATER
+</option>
+
+<option value="OIR" data-full="OVER THE SIDE IMMERSION HEATER">
+OIR-OVER THE SIDE IMMERSION HEATER
+</option>
+
+<option value="WIR" data-full="WATER IMMERSION HEATER">
+WIR-WATER IMMERSION HEATER
+</option>
+
+<option value="OIL" data-full="OIL IMMERSION HEATER">
+OIL-OIL IMMERSION HEATER
+</option>
+
+<option value="CHE" data-full="CHEMICAL IMMERSION HEATER">
+CHE-CHEMICAL IMMERSION HEATER
+</option>
+
+<option value="TIT" data-full="TITANIUM IMMERSION HEATER">
+TIT-TITANIUM IMMERSION HEATER
+</option>
+
+<option value="QTZ" data-full="QUARTZ IMMERSION HEATER">
+QTZ-QUARTZ IMMERSION HEATER
+</option>
+
+</select>
+</div>
+
+<!-- PHASE -->
+<div class="form-group">
+<label>PHASE:</label>
+
+<select id="phase">
+
+<option value="">-- Select Phase --</option>
+
+<option value="SP" data-full="SINGLE PHASE">
+SP-SINGLE PHASE
+</option>
+
+<option value="TP" data-full="THREE PHASE">
+TP-THREE PHASE
+</option>
+
+</select>
+</div>
+
+<!-- VOLTAGE -->
+<div class="form-group">
+<label>VOLTAGE:</label>
+
+<select id="voltage">
+
+<option value="">-- Select Voltage --</option>
+
+<option value="230V" data-full="230 VOLT">
+230V-230 VOLT
+</option>
+
+<option value="415V" data-full="415 VOLT">
+415V-415 VOLT
+</option>
+
+<option value="440V" data-full="440 VOLT">
+440V-440 VOLT
+</option>
+
+</select>
+</div>
+
+<!-- WATT -->
+<div class="form-group">
+<label>WATT:</label>
+
+<select id="watt">
+
+<option value="">-- Select Watt --</option>
+
+<option value="1KW" data-full="1 KILOWATT">
+1KW-1 KILOWATT
+</option>
+
+<option value="2KW" data-full="2 KILOWATT">
+2KW-2 KILOWATT
+</option>
+
+<option value="3KW" data-full="3 KILOWATT">
+3KW-3 KILOWATT
+</option>
+
+<option value="5KW" data-full="5 KILOWATT">
+5KW-5 KILOWATT
+</option>
+
+<option value="7.5KW" data-full="7.5 KILOWATT">
+7.5KW-7.5 KILOWATT
+</option>
+
+<option value="10KW" data-full="10 KILOWATT">
+10KW-10 KILOWATT
+</option>
+
+<option value="15KW" data-full="15 KILOWATT">
+15KW-15 KILOWATT
+</option>
+
+<option value="20KW" data-full="20 KILOWATT">
+20KW-20 KILOWATT
+</option>
+
+</select>
+</div>
+
+<!-- HEATER LENGTH -->
+<div class="form-group">
+<label>HEATER LENGTH:</label>
+
+<select id="length">
+
+<option value="">-- Select Length --</option>
+
+<option value="300MM" data-full="300 MM LENGTH">
+300MM-300 MM LENGTH
+</option>
+
+<option value="500MM" data-full="500 MM LENGTH">
+500MM-500 MM LENGTH
+</option>
+
+<option value="750MM" data-full="750 MM LENGTH">
+750MM-750 MM LENGTH
+</option>
+
+<option value="1000MM" data-full="1000 MM LENGTH">
+1000MM-1000 MM LENGTH
+</option>
+
+<option value="1500MM" data-full="1500 MM LENGTH">
+1500MM-1500 MM LENGTH
+</option>
+
+<option value="2000MM" data-full="2000 MM LENGTH">
+2000MM-2000 MM LENGTH
+</option>
+
+</select>
+</div>
+
+<!-- PIPE SIZE -->
+<div class="form-group">
+<label>PIPE / THREAD SIZE:</label>
+
+<select id="pipe">
+
+<option value="">-- Select Pipe Size --</option>
+
+<option value="1IN" data-full="1 INCH">
+1IN-1 INCH
+</option>
+
+<option value="1.25IN" data-full="1.25 INCH">
+1.25IN-1.25 INCH
+</option>
+
+<option value="1.5IN" data-full="1.5 INCH">
+1.5IN-1.5 INCH
+</option>
+
+<option value="2IN" data-full="2 INCH">
+2IN-2 INCH
+</option>
+
+<option value="2.5IN" data-full="2.5 INCH">
+2.5IN-2.5 INCH
+</option>
+
+</select>
+</div>
+
+<!-- TERMINAL TYPE -->
+<div class="form-group">
+<label>TERMINAL TYPE:</label>
+
+<select id="terminal">
+
+<option value="">-- Select Terminal Type --</option>
+
+<option value="STR" data-full="STANDARD LEAD WIRES">
+STR-STANDARD LEAD WIRES
+</option>
+
+<option value="FGL" data-full="FIBER GLASS LEAD WIRES">
+FGL-FIBER GLASS LEAD WIRES
+</option>
+
+<option value="HTL" data-full="HIGH TEMPERATURE LEAD WIRES">
+HTL-HIGH TEMPERATURE LEAD WIRES
+</option>
+
+<option value="CER" data-full="CERAMIC TERMINAL">
+CER-CERAMIC TERMINAL
+</option>
+
+<option value="TBX" data-full="TERMINAL BOX">
+TBX-TERMINAL BOX
+</option>
+
+<option value="WPB" data-full="WATERPROOF BOX">
+WPB-WATERPROOF BOX
+</option>
+
+</select>
+</div>
+
+<!-- SENSOR -->
+<div class="form-group">
+<label>SENSOR OPTION:</label>
+
+<select id="sensor">
+
+<option value="">-- Select Sensor Option --</option>
+
+<option value="TC" data-full="THERMOCOUPLE">
+TC-THERMOCOUPLE
+</option>
+
+<option value="RTD" data-full="RTD SENSOR">
+RTD-RTD SENSOR
+</option>
+
+<option value="THM" data-full="THERMOSTAT">
+THM-THERMOSTAT
+</option>
+
+<option value="NON" data-full="WITHOUT SENSOR">
+NON-WITHOUT SENSOR
+</option>
+
+</select>
+</div>
+
+<!-- MATERIAL -->
+<div class="form-group">
+<label>HEATER MATERIAL:</label>
+
+<select id="material">
+
+<option value="">-- Select Material --</option>
+
+<option value="SS304" data-full="STAINLESS STEEL 304">
+SS304-STAINLESS STEEL 304
+</option>
+
+<option value="SS316" data-full="STAINLESS STEEL 316">
+SS316-STAINLESS STEEL 316
+</option>
+
+<option value="INC" data-full="INCOLOY">
+INC-INCOLOY
+</option>
+
+<option value="TIT" data-full="TITANIUM">
+TIT-TITANIUM
+</option>
+
+<option value="COP" data-full="COPPER">
+COP-COPPER
+</option>
+
+</select>
+</div>
+
+<!-- APPLICATION -->
+<div class="form-group">
+<label>APPLICATION:</label>
+
+<select id="application">
+
+<option value="">-- Select Application --</option>
+
+<option value="WAT" data-full="WATER HEATING">
+WAT-WATER HEATING
+</option>
+
+<option value="OIL" data-full="OIL HEATING">
+OIL-OIL HEATING
+</option>
+
+<option value="CHE" data-full="CHEMICAL HEATING">
+CHE-CHEMICAL HEATING
+</option>
+
+<option value="TNK" data-full="TANK HEATING">
+TNK-TANK HEATING
+</option>
+
+</select>
+</div>
+
+<div class="form-group">
+<label>QUANTITY:</label>
+<input type="number" id="qty" placeholder="Enter Quantity">
+</div>
+          
+<button type="submit">Generate Code</button>
+    </form>
+
+    <!-- Output Section -->
+    <div id="output" style="display:none;">
+      <div class="result code">
+        Item Code: <span id="itemCode"></span>
+      </div>
+      <button style="width: 35%;" onclick="copyToClipboard('itemCode')">Copy
+        Code</button>
+
+      <div class="result desc">
+        Full Description: <span id="fullDesc"></span>
+      </div>
+      <button style="width: 35%;" onclick="copyToClipboard('fullDesc')">Copy
+        Description</button>
     </div>
-    <button style="width: 35%;" onclick="copyToClipboard('itemCode')">Copy Code</button>
 
-    <div class="result desc">
-      Full Description: <span id="fullDesc"></span>
-    </div>
-    <button style="width: 35%;" onclick="copyToClipboard('fullDesc')">Copy Description</button>
-  </div>
-  
-  <script>
-  function showForm(val) {
-  document.querySelectorAll('.form-section').forEach(f => f.style.display='none');
-  document.getElementById('output').style.display='none';
-  if(val) document.getElementById(val).style.display='block';
-}
+<script>
+    function showForm(itemValue) {
+      document.querySelectorAll('.form-section').forEach(form => {
+        form.style.display = 'none';
+        form.reset();
+      });
+      document.getElementById("output").style.display = 'none';
+      if (itemValue) document.getElementById(itemValue).style.display = 'block';
+    }
 
-function generateCode(e, prefix, title) {
-  e.preventDefault();
-  const form = e.target;
-  let code = prefix;
-  let desc = title;
+    function generateCode(event, prefix, title) {
+      event.preventDefault();
+      const form = event.target;
+      const codeParts = [prefix];
+      const descParts = [title];
 
-  form.querySelectorAll('select, input').forEach(el => {
-    if(el.value) {
-      code += el.value;
-      if(el.tagName === 'SELECT') {
-        desc += ' ' + el.options[el.selectedIndex].dataset.full;
-      } else {
-        desc += ' ' + el.value;
+      form.querySelectorAll('select, input').forEach(el => {
+        const val = el.value.trim();
+        if (!val) return;
+        if (el.tagName === 'SELECT') {
+          const option = el.options[el.selectedIndex];
+          codeParts.push(option.value);
+          if (option.getAttribute('data-full')) descParts.push(option.getAttribute('data-full'));
+        } else {
+          const label = el.name.charAt(0).toUpperCase() + el.name.slice(1).replace(/_/g, ' ');
+          codeParts.push(val);
+          descParts.push(`${label}: ${val}`);
+        }
+      });
+
+      document.getElementById('itemCode').textContent = codeParts.join('');
+      document.getElementById('fullDesc').textContent = descParts.join(' ');
+      document.getElementById('output').style.display = 'block';
+    }
+
+    function showTextboxes() {
+      const container = document.getElementById('textboxContainer');
+      container.innerHTML = '';
+      const cfg = {
+        BAN: ["D (mm)", "Wattage (L)", "Voltage (T)"],
+        PLA: ["Width (W)", "Length (L)", "Power Rating (T)"],
+        DIS: ["Outer Diameter (D)", "Thickness (T)"],
+        LSH: ["Arm Length A", "Arm Length B", "Bend Radius"]
+      };
+      const sel = document.getElementById('category').value;
+      (cfg[sel] || []).forEach(label => {
+        const l = document.createElement('label');
+        l.textContent = label + ':';
+        const i = document.createElement('input');
+        i.type = 'number';
+        i.name = label.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        container.appendChild(l);
+        container.appendChild(i);
+      });
+      if (!cfg[sel]) {
+        const l = document.createElement('label');
+        l.textContent = 'Description:';
+        const i = document.createElement('input');
+        i.type = 'text';
+        i.name = 'custom_description';
+        container.appendChild(l);
+        container.appendChild(i);
       }
     }
-  });
 
-  document.getElementById('itemCode').innerText = code;
-  document.getElementById('fullDesc').innerText = desc;
-  document.getElementById('output').style.display='block';
-}
+    function copyToClipboard(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() =>
+        alert('Copied: ' + text)
+      ).catch(err =>
+        alert('Copy failed: ' + err)
+      );
+    }
+  </script>
 
-function copyToClipboard(id) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text);
-  alert("Copied: " + text);
-}
-  
 
-// PWA
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('service-worker.js');
-}
-</script>
-
-</body>
+  </body>
 </html>
